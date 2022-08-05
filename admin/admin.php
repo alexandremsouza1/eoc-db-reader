@@ -2,25 +2,25 @@
 /***************************************************************************
 
 
-        EOC Database Reader
-        Author: Eric Olson Consulting LLC
+        CMS Table
+        Author: Alexandre Magno
         Website: www.ericolsonconsulting.com
-        Contact: http://www.ericolsonconsulting.com
+        Contact: https://www.linkedin.com/in/alexandre-m-souza/
 
-        This file is part of EOC Database Reader.
+        This file is part of CMS Table.
 
-    EOC Database Reader is free software; you can redistribute it and/or modify
+    CMS Table is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
 
-    EOC Database Reader is distributed in the hope that it will be useful,
+    CMS Table is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with EOC Database Reader; if not, write to the Free Software
+    along with CMS Table; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
         
         You can find a copy of the GPL licence here:
@@ -31,8 +31,8 @@ $filepath = realpath (dirname(dirname(__FILE__)));
 include_once($filepath.'/includes.php');
 
 function eocdbr_add_plugins_page(){
-    $page_title =  'EOC Database Reader';
-    $menu_title = 'EOC Database Reader';
+    $page_title =  'CMS Table';
+    $menu_title = 'CMS Table';
     $capability = 'manage_options';
     $menu_slug = 'eocdbr-admin';
     $function = 'eocdbr_admin_page';
@@ -56,19 +56,16 @@ function enqueue_admin_css($page) {
 function eocdbr_admin_page(){ ?>
     <div class="wrap">
         <?php screen_icon(); ?>
-        <h2>EOC Database Reader Setting</h2>
-        <form method="post" action="options.php"> 
+        <h2>CMS Table Setting</h2>
+        <form method="post"> 
             <?php settings_fields( 'default' ); ?>
-            <h3>Database Query Configuration</h3>
-                <p>This settings page allows you to enter a valid mysql database query. This is the query that will be executed by the plugin.</p>
-            <?php submit_button(); ?>
+            <h3>CMS View Table</h3>
+                <p>Edit and view CMS table contents</p>
         </form>
         <?php
-			$query_set_id = 3;
-			$query_type = 'SELECT';
 			$query = new DBR_Query();
 			$rc = new DBR_RecordSet();
-			$rc->setQuery($query->get_query_string_by_id($query_set_id, $query_type));
+			$rc->setQuery($query->get_query_cms());
 			$rc->displayTable();
         ?>
     </div>

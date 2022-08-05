@@ -1,5 +1,8 @@
-CREATE TABLE wp_dbr_queries (
-    query_id int(11) NOT NULL AUTO_INCREMENT,
-    query text,
-    PRIMARY KEY (query_id)
-    ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1
+CREATE TABLE if not exists  `cms` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `varid` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY `Index 1` (`id`),
+  KEY `Index 2` (`varid`)
+) 

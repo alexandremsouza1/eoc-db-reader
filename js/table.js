@@ -1,23 +1,31 @@
 jQuery(document).ready(function($) {  
     
-    //~ $("tr").on("click", function() {
-		//~ $(this).addClass("highlight");
-		//~ });
-	//~ 
-	//~ $("tr").off("blur", function() {
-		//~ $(this).removeClass("highlight");
-		//~ });
-		
-		//$("tr").toggle(function(){
-			//$(this).addClass("highlight");
-		//}, function(){
-			//$(this).removeClass("highlight");
-		//});
-		
-		var selected = [];
-		$("tr").click(function() {
-			$(this).parent("tbody").children("tr").removeClass("highlight");
-			$(this).addClass("highlight");
-			selected["row"] = $(this).parent("body").index();
-		});
+  var $table = $('#table')
+
+  $(function() {
+    $table.bootstrapTable()
+
+    $('.toolbar input').change(function () {
+      var paginationParts = []
+      $('.toolbar input:checked').map(function () {
+        paginationParts.push($(this).next().text())
+      })
+
+      $table.bootstrapTable('refreshOptions', {
+        paginationParts: paginationParts
+      })
+    })
+  })
+
+  function myAjax() {
+    $.ajax({
+         type: "POST",
+         url: 'your_url/ajax.php',
+         data:{action:'call_this'},
+         success:function(html) {
+           alert(html);
+         }
+
+    });
+  }
 });

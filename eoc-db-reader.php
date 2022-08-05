@@ -1,14 +1,19 @@
 <?php
 /*
-Plugin Name: EOC Database Reader
-Plugin URI: http://www.ericolsonconsulting.com
-Description: EOC Database Reader is an exercise in retrieving records from a database query.
+Plugin Name: CMS Table
+Plugin URI: https://www.linkedin.com/in/alexandre-m-souza/
+Description: CMS Table is an exercise in retrieving records from a database query.
 Version: 0.0.1
-Author: Eric Olson Consulting LLC
-Author URI: http://www.ericolsonconsulting.com
+Author: Alexandre Magno
+Author URI: https://www.linkedin.com/in/alexandre-m-souza/
 License: GPL3
 */
+
+
 $filepath = realpath (dirname(__FILE__));
 include_once($filepath.'/includes.php');
+
+$args = $_POST;
+apply_filters( 'insert_register_cms', $args );
 
 ?>
